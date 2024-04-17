@@ -5,6 +5,7 @@ import requests
 
 # Store as environment variable for future
 auth_key = os.environ.get('API_SECRET')
+print(f'AUTH KEY: {auth_key}')
 
 # Get all repos in organization
 url = "https://api.github.com/orgs/Sierra7-Organization-Sandbox/repos"

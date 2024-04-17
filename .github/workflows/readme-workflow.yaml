@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  my_job:
+  run_python_script:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +17,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+
+    - name: Print secret
+      run: echo ${{ secrets.MY_SECRET }}
 
     - name: Install dependencies
       run: |
