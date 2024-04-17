@@ -1,0 +1,25 @@
+name: Readme Universal Updater
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Run Python script
+      env:
+        MY_SECRET: ${{ secrets.API_SECRET }}
+      run: |
+        python main.py
