@@ -3,7 +3,7 @@ import os
 
 import requests
 
-# Store as environment variable for future
+# Store as environment variable for future Repo>Settings>Secrets & Variables>Actions>Repository Secret
 auth_key = os.environ.get('API_SECRET')
 print(f'AUTH KEY: {auth_key}')
 
