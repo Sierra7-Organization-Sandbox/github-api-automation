@@ -21,9 +21,6 @@ jobs:
     - name: Print secret
       run: echo ${{ secrets.MY_SECRET }}
 
-    - name: Print all environment variables
-      run: printenv
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -31,6 +28,6 @@ jobs:
 
     - name: Run Python script
       env:
-        MY_SECRET: ${{ secrets.API_SECRET }}
+        API_SECRET: ${{ secrets.API_SECRET }}
       run: |
         python main.py
