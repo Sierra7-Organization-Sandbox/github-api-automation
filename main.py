@@ -13,7 +13,7 @@ url = "https://api.github.com/orgs/Sierra7-Organization-Sandbox/repos"
 headers = {
     "Accept": "application/vnd.github.v3+json",
     "Authorization": f"Bearer {auth_key}",
-    "X-GitHub-Api-Version":  "2022-11-28"
+    "X-GitHub-Api-Version": "2022-11-28"
 }
 
 response = requests.get(url, headers=headers)
@@ -48,8 +48,6 @@ for repo in repo_list:
 
     new_content_encoded = base64.b64encode(readme_text.encode('utf-8')).decode('utf-8')
 
-    print(response.json()['sha'])
-
     update_data = {
         'message': 'Update README.md',
         'content': new_content_encoded,
@@ -61,3 +59,21 @@ for repo in repo_list:
         print("README.md updated successfully!")
     else:
         print("Failed to update README.md:", response.text)
+
+    # Alter About Me (Description of Repo)
+    description_url = f"https://api.github.com/repos/Sierra7-Organization-Sandbox/{repo}"
+
+    # Define data payload with the new description
+    data = {
+        "description": '™™™ Universal-Description Created ™™™'
+    }
+
+    # Send PATCH request to update the repository description
+    response = requests.patch(url, json=data, headers=headers)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        print("Repository description updated successfully.")
+    else:
+        print(f"Failed to update repository description. Status code: {response.status_code}")
+        print(response.json())
