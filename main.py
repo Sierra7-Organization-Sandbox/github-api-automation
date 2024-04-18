@@ -5,7 +5,6 @@ import requests
 
 # Store as environment variable for future Repo>Settings>Secrets & Variables>Actions>Repository Secret
 auth_key = os.environ.get('API_SECRET')
-print(f'AUTH KEY: {auth_key}')
 
 # Get all repos in organization
 url = "https://api.github.com/orgs/Sierra7-Organization-Sandbox/repos"
@@ -38,12 +37,12 @@ for repo in repo_list:
 
     response = requests.get(readme_url, headers=headers)
     content = response.json()['content']
-    print(response.json())
 
     readme_text = base64.b64decode(content).decode('utf-8')
 
     if 'EvanF_6564' not in readme_text:
-        readme_text += ("\n\n``` diff\n- This is copied README INFO from across all repositories in Sierra7-Organization-Sandbox - EvanF_6564**\n```")
+        readme_text += ("\n\n``` diff\n- This is copied README INFO from across all repositories in "
+                        "Sierra7-Organization-Sandbox - EvanF_6564**\n```")
 
     update_readme_url = f'https://api.github.com/repos/Sierra7-Organization-Sandbox/{repo}/contents/README.md'
 

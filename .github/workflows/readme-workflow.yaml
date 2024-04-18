@@ -13,10 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Python
+    - name: Set up Python with Node.js 20
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+        node-version: '20'
 
     - name: Print secret
       run: echo ${{ secrets.MY_SECRET }}
