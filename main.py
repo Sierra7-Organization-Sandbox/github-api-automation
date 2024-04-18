@@ -69,7 +69,7 @@ for repo in repo_list:
     }
 
     # Send PATCH request to update the repository description
-    response = requests.patch(url, json=data, headers=headers)
+    response = requests.patch(description_url, json=data, headers=headers)
 
     # Check if the request was successful
     if response.status_code == 200:
